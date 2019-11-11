@@ -13,14 +13,17 @@ def survey(request):
     return render(request, "survey.html")
 
 def getSchedule(request):
+    username = request.POST['name']
+    print(username)
     schedule = []
     for d in range(lengthX):
         timeSlots = []
         for t in range(lengthY):
-            timeSlots.append(request.POST[str(t) + str(d)])
+            timeSlots.append(True if request.POST[str(t) + str(d)] == 'true' else False)
         schedule.append(timeSlots)
     schedules.append(schedule)
     printSchedules()
+    print(compareSchedules(schedules, 2))
     return HttpResponseRedirect(reverse(survey))
 
 def printSchedules():
@@ -35,7 +38,7 @@ def printSchedule(schedule):
             line += str(schedule[d][t]) + " "
         print(line)
 
-def compareSchedules(cmpSchedules):
+def compareSchedules(cmpSchedules, length):
     periods = [[] for i in range(lengthX)]
     for d in range(lengthX):
         timeSlots = []
@@ -46,7 +49,7 @@ def compareSchedules(cmpSchedules):
             if free:
                 timeSlots.append(t)
             if not free or t == lengthY - 1:
-                if len(timeSlots) >= 2:
+                if len(timeSlots) >= length:
                     periods[d].append(timeSlots)
                 timeSlots = []
     return periods
