@@ -10,6 +10,7 @@ def loginUser(request):
   if request.method == "POST":
     credentials = request.POST["credentials"]
     password = request.POST["password"]
+    return redirect("/success")
 
 def registerUser(request):
   if request.method == "POST":
