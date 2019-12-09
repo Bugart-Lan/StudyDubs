@@ -10,13 +10,13 @@ def loginUser(request):
   if request.method == "POST":
     credentials = request.POST["credentials"]
     password = request.POST["password"]
-    return redirect("/success")
+    return redirect("/login/success")
 
 def registerUser(request):
   if request.method == "POST":
     firstName = request.POST["firstName"]
     lastName = request.POST["lastName"]
-    return redirect("/success")
+    return redirect("/login/success")
 
 def success(request):
   return render(request, "success.html");
