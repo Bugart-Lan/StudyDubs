@@ -9,7 +9,7 @@
 <body>
   <nav></nav>
   <section>
-    <form action="">
+    <form action="{% url 'registerUser' %}">
       {% csrf_token %}
       <input type="text" placeholder="First Name" id="firstName">
       <input type="text" placeholder="Last Name" id="lastName">
