@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register - Griffin</title>
+</head>
+<body>
+  <nav></nav>
+  <section>
+    <form action="{% url 'registerUser' %}">
+      {% csrf_token %}
+      <input type="text" placeholder="First Name" id="firstName">
+      <input type="text" placeholder="Last Name" id="lastName">
+      <input type="text" placeholder="Email Address" id="email">
+      <input type="submit" value="Register">
+    </form>
+  </section>
+</body>
+</html>
