@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="static/login_styles.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to StudyDubs!</h1>
+            <h1>Login</h1>
+            <form>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control">
+              </div>
+              <row>
+                  <a href="{% url 'register' %}">Don't have an account? Register now</a>
+                  <button type="submit" style="float:right" class="btn btn-primary">Submit</button>
+              </row>
+            </form>
+        </div>
+    </body>
+</html>

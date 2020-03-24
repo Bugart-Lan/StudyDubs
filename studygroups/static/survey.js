@@ -1,6 +1,7 @@
 const template = Handlebars.compile(document.querySelector('#row').innerHTML);
 const arrSlotRect = [], arrSlot = []
 const lengthY = 12
+const COLOR = "green"
 document.addEventListener('DOMContentLoaded', () => {
     create_table()
     init_arrSlot()
@@ -30,10 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         slot.onmousedown = () => {
             drag = true
             i1 = findX(event.clientX), j1 = findY(event.clientY + window.scrollY)
-            if (slot.style.backgroundColor == "green")
+            if (slot.style.backgroundColor == COLOR)
                 color = "white"
             else
-                color = "green"
+                color = COLOR
             change(slot, color)
         }
     })
@@ -112,7 +113,7 @@ function findYHelper(a, b, tarY) {
 
 function change(slot, color) {
     const original_color = slot.style.backgroundColor
-    slot.querySelector('input').value = (color == "green")
+    slot.querySelector('input').value = (color == COLOR)
     slot.style.backgroundColor = color
     return [slot, original_color]
 }

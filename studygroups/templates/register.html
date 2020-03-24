@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="static/login_styles.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const username = document.getElementById("username")
+                const number = document.getElementById("number")
+                const password = document.getElementById("password")
+                const password2 = document.getElementById("password2")
+                const button = document.getElementById("submit")
+                const alert = document.getElementById("alert")
+
+                isValid(username, number, password, password2, button)
+
+                username.onkeyup = function() { isValid(username, number, password, password2, button) }
+                number.onkeyup = function() { isValid(username, number, password, password2, button) }
+                password.onkeyup = function() { isValid(username, number, password, password2, button) }
+                password2.onkeyup = function() { isValid(username, number, password, password2, button) }
+
+            })
+
+            function isValid(username, number, password, password2, button) {
+                if (username.value !== "" && password.value !== "" && password.value === password2.value &&
+                    number.value.length == 7)
+                    button.disabled = false
+                else
+                    button.disabled = true
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Register for StudyDubs!</h1>
+            <form action="{% url 'create_account' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Username</label>
+                    <input id="username" name="username" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Student number</label>
+                    <input id="number" name="number" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input id="password" name="password" type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Confirm password</label>
+                    <input id="password2" name="password" type="password" class="form-control">
+                </div>
+                <div id="alert" style="visibility:hidden" class="alert alert-danger" role="alert"></div>
+                <button id="submit" type="submit" style="float:right" class="btn btn-primary" disabled>Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

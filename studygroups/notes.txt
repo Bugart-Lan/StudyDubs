@@ -1,0 +1,18 @@
+class SkillSet(models.Model):
+    skill = models.CharField(max_length=64)
+    score = models.IntegerField()
+    criteria = models.ForeignKey(Criteria, on_delete=models.CASCADE, related_name="scores")
+
+    def __str__(self):
+        return skill + ": " + score
+
+class Schedule(models.Model):
+    criteria = models.ForeignKey(Criteria, on_delete=models.CASCADE, related_name="schedule")
+
+class Day(models.Model):
+    name = models.CharField(max_length=64)
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE, related_name="days")
+
+class Block(models.Model):
+    availability = models.BooleanField()
+    day = models.ForeignKey(Day, on_delete=models.CASCADE, related_name="blocks")
