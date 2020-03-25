@@ -9,19 +9,23 @@
         <div class="container">
             <h1>Welcome to StudyDubs!</h1>
             <h1>Login</h1>
-            <form>
-              <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control">
-              </div>
-              <row>
-                  <a href="{% url 'register' %}">Don't have an account? Register now</a>
-                  <button type="submit" style="float:right" class="btn btn-primary">Submit</button>
-              </row>
+            <form action="{% url 'login_view' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Username</label>
+                    <input name="username" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input name="password" type="password" class="form-control">
+                </div>
+                {% for message in messages %}
+                <div id="alert" class="alert alert-danger" role="alert">{{ message }}</div>
+                {% endfor %}
+                <row>
+                    <a href="{% url 'register' %}">Don't have an account? Register now</a>
+                    <button type="submit" style="float:right" class="btn btn-primary">Submit</button>
+                </row>
             </form>
         </div>
     </body>

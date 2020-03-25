@@ -52,7 +52,9 @@
                     <label>Confirm password</label>
                     <input id="password2" name="password" type="password" class="form-control">
                 </div>
-                <div id="alert" style="visibility:hidden" class="alert alert-danger" role="alert"></div>
+                {% for message in messages %}
+                <div id="alert" class="alert alert-danger" role="alert">{{ message }}</div>
+                {% endfor %}
                 <button id="submit" type="submit" style="float:right" class="btn btn-primary" disabled>Submit</button>
             </form>
         </div>
