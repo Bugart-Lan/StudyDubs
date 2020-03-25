@@ -9,4 +9,4 @@
 ## Back End Technologies
 1. **Python** - Language https://www.python.org/downloads/
 2. **Django** - Web Framework https://www.djangoproject.com/start/
-3. **SQLite3** - Database https://www.sqlite.org/version3.html
+3. **MongoDBAtlas** - Database https://docs.atlas.mongodb.com/
