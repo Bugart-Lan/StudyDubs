@@ -11,8 +11,10 @@ from .models import *
 lengthX = 7
 lengthY = 12
 
+surveyN = 5
+
 def index(request):
-    return HttpResponseRedirect(reverse(survey))
+    return HttpResponseRedirect(reverse(schedule))
 
 def login(request):
     """
@@ -33,7 +35,16 @@ def login_view(request):
         messages.add_message(request, messages.ERROR, 'Invalid credentials.')
         return HttpResponseRedirect(reverse(login))
 
+def schedule(request):
+    return render(request, "schedule.html")
+
 def survey(request):
+    return render(request, "survey.html")
+
+def getSurveyResults(request):
+    for i in range(surveyN):
+        result = request.POST[str(i)]
+        print(result)
     return render(request, "survey.html")
 
 def register(request):

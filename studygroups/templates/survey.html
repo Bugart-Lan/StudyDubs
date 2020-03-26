@@ -3,47 +3,27 @@
     <head>
         <title>Survey</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="static/styles.css"/>
+        <link rel="stylesheet" href=""/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-        <script id="row" type="text/x-handlebars-template">
-            <tr>
+        <script id="question" type="text/x-handlebars-template">
+            <div class="form-check form-check-inline">
                 {% verbatim %}
-                <td>{{ time }}</td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name1 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name2 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name3 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name4 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name5 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name6 }}"/></td>
-                <td class="slot"><input type="hidden" value="false" name="{{ name7 }}"/></td>
+                <input class="form-check-input" type="radio" name="{{ name }}" value="{{ val }}" />
+                <label class="form-check-label">{{ val }}</label>
                 {% endverbatim %}
-            </tr>
+            </div>
         </script>
         <script src="static/survey.js"></script>
     </head>
     <body>
         <center><h1>Survey</h1></center>
-        <form style="padding:50px" action="{% url 'getSchedule' %}" method="post">
-            {% csrf_token %}
-            <div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="schedule-header">Time</th>
-                            <th class="schedule-header">Sunday</th>
-                            <th class="schedule-header">Monday</th>
-                            <th class="schedule-header">Tuesday</th>
-                            <th class="schedule-header">Wednesday</th>
-                            <th class="schedule-header">Thursday</th>
-                            <th class="schedule-header">Friday</th>
-                            <th class="schedule-header">Saturday</th>
-                        </tr>
-                    </thead>
-                    <tbody id="schedule-row">
-                    </tbody>
-                </table>
-            </div>
-            <input class="btn btn-success" type="submit" value="submit" />
-        </form>
+        <div class="container">
+            <form action="{% url 'getSurveyResults' %}" method="post">
+                {% csrf_token %}
+                <div id="survey_body"></div>
+                <br />
+                <input class="btn btn-success" type="submit" value="submit" />
+            </form>
+        </div>
     </body>
 </html>
